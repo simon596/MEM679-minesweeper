@@ -1,6 +1,6 @@
 # game.py
 
-from src.board import Board  # Import the Board class from the src.board module
+from mem679_minesweeper.board import Board  # Import the Board class from the src.board module
 
 class Game:
     """

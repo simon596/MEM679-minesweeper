@@ -2,7 +2,7 @@
 
 import pygame
 import sys
-from src.game import Game  # Import the Game class from the src package
+from mem679_minesweeper.game import Game  # Import the Game class from the src package
 
 # Define colors used in the game (RGB values)
 WHITE = (255, 255, 255)

@@ -1,7 +1,7 @@
 # board.py
 
 import random  # Import the random module for shuffling and random selection
-from src.cell import Cell  # Import the Cell class from the src.cell module
+from mem679_minesweeper.cell import Cell  # Import the Cell class from the src.cell module
 
 class Board:
     """

@@ -1,3 +1,5 @@
+.. _readme:
+
 .. These are examples of badges you might want to add to your README:
    please update the URLs accordingly
 

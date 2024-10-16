@@ -1,8 +1,9 @@
 # .coveragerc to control coverage.py
+
 [run]
 branch = True
 source = mem679_minesweeper
-# omit = bad_file.py
+omit = gui.py
 
 [paths]
 source =

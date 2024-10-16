@@ -1,7 +1,14 @@
 # tests/test_game.py
+import os, sys
+# Get the absolute path to the current script's directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Construct the path to the '/src' directory
+src_dir = os.path.join(current_dir, '..', 'src')
+# Add '/src' to Python's module search path
+sys.path.append(src_dir)
 
 import unittest
-from src.game import Game
+from mem679_minesweeper.game import Game
 
 class TestGame(unittest.TestCase):
     def setUp(self):
@@ -62,15 +69,41 @@ class TestGame(unittest.TestCase):
         self.assertFalse(self.game.game_over)
 
     def test_chord_cell_mine_triggered(self):
-        self.game.board.place_mines(exclude_x=2, exclude_y=2)
+        # Manually set up the board
+        self.game.board.mines_placed = True  # Indicate that mines are placed
+        self.game.first_click = False  # Indicate that it's not the first click
+
+        # Place mines around (2,2)
+        mine_positions = [(1, 2), (2, 1), (3, 2)]  # Known mine positions
+        for x, y in mine_positions:
+            self.game.board.grid[x][y].set_mine()
+
+        # Set adjacent mines count for cell (2,2)
         cell = self.game.board.grid[2][2]
-        cell.reveal()
-        # Flag incorrect cells
-        self.game.board.grid[1][1].toggle_flag()
+        cell.adjacent_mines = len(mine_positions)
+        cell.reveal()  # Reveal the cell at (2,2)
+
+        # Flag incorrect adjacent cells (non-mine cells)
+        flags_needed = cell.adjacent_mines  # Number of flags should equal adjacent mines
+        flags_placed = 0
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                nx, ny = 2 + dx, 2 + dy
+                if dx == 0 and dy == 0:
+                    continue
+                if (0 <= nx < self.game.board.rows) and (0 <= ny < self.game.board.columns):
+                    neighbor = self.game.board.grid[nx][ny]
+                    if not neighbor.is_mine and flags_placed < flags_needed:
+                        neighbor.toggle_flag()  # Incorrectly flag non-mine cells
+                        flags_placed += 1
+
         # Perform chording
         self.game.chord_cell(2, 2)
+
+        # Assert that the game is over and the player has lost
         self.assertTrue(self.game.game_over)
         self.assertFalse(self.game.win)
+
 
 if __name__ == '__main__':
     unittest.main()

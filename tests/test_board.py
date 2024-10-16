@@ -1,7 +1,7 @@
 # tests/test_board.py
 
 import unittest
-from src.board import Board
+from mem679_minesweeper.board import Board
 
 class TestBoard(unittest.TestCase):
     def setUp(self):

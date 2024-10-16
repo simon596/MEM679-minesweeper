@@ -1,3 +1,4 @@
+.. _license:
 The MIT License (MIT)
 
 Copyright (c) 2024 Simeng Wu
