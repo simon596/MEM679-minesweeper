@@ -36,10 +36,10 @@ MEM679-minesweeper
 ==================
 
 
-    Add a short description here!
+    Customized board size is now supported! Use shift+left-click to open all neighboring cells!
 
 
-A longer description of your project goes here...
+This is the homepage of Simeng Wu's MEM679 homework 2 - MEM679-minesweeper. For installation instructions, please refer to :ref:`Installation <installation>`. To get start, please refer to the game's rule and the usage of the modules, i.e., :ref:`Game's Rule and Usage <usage>`.
 
 
 .. _pyscaffold-notes:
@@ -48,4 +48,4 @@ Note
 ====
 
 This project has been set up using PyScaffold 4.6. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
+information on PyScaffold see https://pyscaffold.org/. Pytest has been exploited and reached over 80% coverage. For details to verify it, please refer to :ref:`Installation <installation>`.
